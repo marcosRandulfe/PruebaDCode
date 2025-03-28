@@ -1,0 +1,19 @@
+{
+    "name": "duacode/marcosrandulfe",
+    "description": "duacode/marcosrandulfe",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Duacode\\Marcosrandulfe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcos Randulfe",
+            "email": "marcos.randulfe@evelb.es"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.9"
+    }
+}
