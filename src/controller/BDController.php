@@ -6,13 +6,14 @@ use Monolog\Logger;
 
 class BDController
 {
+
     public function getDatabaseConnection()
     {
         $log = new Logger('app_logger');
         $log->pushHandler(new StreamHandler('/var/log/php_log4php.log'));
 
         $host = '127.0.0.1';
-        $dbname = 'mydatabase';
+        $dbname = 'DuacodeMarcosRandulfe';
         $username = 'root'; // replace with actual username
         $password = 'myrootpassword'; // replace with actual password
 

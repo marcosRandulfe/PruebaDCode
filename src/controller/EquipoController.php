@@ -36,7 +36,7 @@ class EquipoController
         $bd = new BDController();
         $conexion = $bd->getDatabaseConnection();
         // Prepare and execute the query to create a new equipo
-        $consulta = $conexion->prepare("INSERT INTO EQUIPO (NOMBRE, CIUDAD, DEPORTE, FECHA_FUNDACION) VALUES (?, ?, ?, ?)");
+        $consulta = $conexion->prepare("INSERT INTO EQUIPO (NOMBRE, CIUDAD_ID, DEPORTE, FECHA_FUNDACION) VALUES (?, ?, ?, ?)");
         $deporte1 = $equipo->getDeporte();
         $nombre1 = $equipo->getNombre();
         $ciudad1 = $equipo->getCiudad();
@@ -58,7 +58,7 @@ class EquipoController
         $result = $consulta->get_result();
         $equipo = null;
         if ($row = $result->fetch_assoc()) {
-            $equipo = new Equipo($row['ID'], $row['NOMBRE'], $row['CIUDAD'], $row['DEPORTE'], $row['FECHA_FUNDACION']);
+            $equipo = new Equipo($row['ID'], $row['NOMBRE'], $row['CIUDAD_ID'], $row['DEPORTE'], $row['FECHA_FUNDACION']);
         }
         return $equipo;
     }
@@ -74,7 +74,7 @@ class EquipoController
 
         // Fetch all results as an associative array
         $rows = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
-        $equipos = array_map(fn($row) => new Equipo($row['ID'], $row['NOMBRE'], $row['CIUDAD'], $row['DEPORTE'], $row['FECHA_FUNDACION']), $rows);
+        $equipos = array_map(fn($row) => new Equipo($row['ID'], $row['NOMBRE'], $row['CIUDAD_ID'], $row['DEPORTE'], $row['FECHA_FUNDACION']), $rows);
         $log = new Logger('app_logger');
         $log->pushHandler(new StreamHandler('/var/log/php_log4php.log'));
         //$log->info("Retrieved equipos from the database");
