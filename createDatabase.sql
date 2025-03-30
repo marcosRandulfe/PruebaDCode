@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS DuacodeMarcosRandulfe;
 CREATE DATABASE DuacodeMarcosRandulfe;
 USE DuacodeMarcosRandulfe;
 
@@ -23,3 +24,13 @@ VALUES ('Madrid'), ('Barcelona'), ('Valencia'),
        ('Palma de Mallorca'), ('Las Palmas de Gran Canaria'),
        ('Santiago de Compostela'), ('A Coruña'), ('Ourense'),
        ('Vigo'), ('Lugo'), ('Ferrol');
+
+CREATE TABLE JUGADOR (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    NOMBRE VARCHAR(255),
+    NUMERO INT,
+    EQUIPO_ID INT,
+    CONSTRAINT FK_EQUIPO_ID FOREIGN KEY (EQUIPO_ID) REFERENCES EQUIPO(ID),
+    ES_CAPITAN BOOLEAN,
+    CONSTRAINT UNIQUE_NUMERO_EQUIPO UNIQUE (NUMERO, EQUIPO_ID)
+);

@@ -4,6 +4,8 @@ namespace Duacode\Marcosrandulfe\controller;
 require __DIR__ . '/../../vendor/autoload.php';
 
 use Duacode\Marcosrandulfe\model\Equipo;
+use Duacode\Marcosrandulfe\model\Jugador;
+use Exception;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
@@ -52,13 +54,13 @@ class EquipoController
         $conexion = $dbController->getDatabaseConnection();
 
         // Prepare and execute the query to fetch the equipo by id
-        $consulta = $conexion->prepare("SELECT * FROM EQUIPO WHERE ID = ?");
+        $consulta = $conexion->prepare("SELECT E.*, C.NOMBRE AS CIUDAD FROM EQUIPO E INNER JOIN CIUDAD C ON C.ID = E.CIUDAD_ID WHERE E.ID = ?");
         $consulta->bind_param('i', $id);
         $consulta->execute();
         $result = $consulta->get_result();
         $equipo = null;
         if ($row = $result->fetch_assoc()) {
-            $equipo = new Equipo($row['ID'], $row['NOMBRE'], $row['CIUDAD_ID'], $row['DEPORTE'], $row['FECHA_FUNDACION']);
+            $equipo = new Equipo($row['ID'], $row['NOMBRE'], $row['CIUDAD'], $row['DEPORTE'], $row['FECHA_FUNDACION']);
         }
         return $equipo;
     }
@@ -82,5 +84,26 @@ class EquipoController
         return $equipos; // Return the list of equipos from the database
     }
 
+    /**
+     * @throws Exception
+     */
+    public function obtenerCapitan($idEquipo) : Jugador
+    {
+        $bd = new BDController();
+        $conexion = $bd->getDatabaseConnection();
+        $consulta = $conexion->prepare("SELECT j.* FROM JUGADOR j 
+            JOIN EQUIPO e ON j.EQUIPO_ID = e.ID 
+            WHERE e.ID = ? AND j.ES_CAPITAN = 1");
+        $consulta->bind_param('i', $idEquipo);
+        $consulta->execute();
+        $result = $consulta->get_result();
+        if($result!= null && $result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            $capitan = new Jugador($row['ID'], $row['NOMBRE'], $row['NUMERO'], $row['EQUIPO_ID'], $row['ES_CAPITAN']);
+        }else{
+            throw new Exception("No se encontró un capitán para el equipo con ID: " . $idEquipo);
+        }
+        return $capitan;
+    }
 
 }
