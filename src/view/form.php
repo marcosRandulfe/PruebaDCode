@@ -11,10 +11,10 @@ require __DIR__ . '../../../vendor/autoload.php';
         <?php
         $currentUrl = "http://$_SERVER[HTTP_HOST]";
         ?>
-    <form action="<?php echo $currentUrl; ?>/DuacodeMarcosRandulfe/src/controller/FormEquipoController.php" action="form.php" method="post" class="space-y-4" onsubmit="return validarFormulario()">
+    <form action="<?php echo $currentUrl; ?>/DuacodeMarcosRandulfe/src/controller/FormEquipoController.php" method="post" class="space-y-4" onsubmit="return validarFormulario()">
         <div>
             <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
-            <input type="text" name="nombre" id="nombre" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+            <input type="text" name="nombre" id="nombre" pattern="[A-Za-z\s]+" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
         </div>
         <div>
             <label for="ciudad" class="block text-sm font-medium text-gray-700">Ciudad</label>

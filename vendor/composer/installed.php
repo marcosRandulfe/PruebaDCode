@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'duacode/marcosrandulfe',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '6600a6b18f719cb948f786c351129c52cc4edb43',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'duacode/marcosrandulfe' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '6600a6b18f719cb948f786c351129c52cc4edb43',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

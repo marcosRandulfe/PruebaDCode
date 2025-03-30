@@ -1,5 +1,7 @@
 <?php
 namespace Duacode\Marcosrandulfe\model;
+use Duacode\Marcosrandulfe\controller\EquipoController;
+
 class Equipo
 {
 
@@ -104,6 +106,17 @@ class Equipo
     public function setFechaFundacion($fechaFundacion)
     {
         $this->fechaFundacion = $fechaFundacion;
+    }
+
+
+    /**
+     * @return Jugador|null
+     */
+    public function obtenerCapitan() :  Jugador
+    {
+        $equipoController = new EquipoController();
+        $capitan = $equipoController->obtenerCapitan($this->getId());
+        return $capitan;
     }
 
 

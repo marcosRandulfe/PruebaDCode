@@ -1,5 +1,14 @@
 <footer class="bg-gray-200 py-4 px-6 text-center">
     <p class="text-sm">Prueba técnica duacode</p>
 </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("Página cargada");
+        document.getElementById("myButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Botón clickeado");
+        });
+    });
+</script>
 </body>
 </html>
