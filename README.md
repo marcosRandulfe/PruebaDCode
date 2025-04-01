@@ -4,7 +4,7 @@ También incorpora la funcionalidad necesaria para ver los capitanes de cada equ
 
 Para el correcto funcionamiento de este proyecto es necesario  ejecutar el siguiente comando
 
-###composer install
+### composer install
 
 El proyecto usa el autoload de composer esto hace más fácil su gestión dado que así se instala automaticamente
 la libreria de logs y todo lo necesario para que funcione la conexión a base de datos
